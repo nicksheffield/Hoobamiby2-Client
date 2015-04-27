@@ -2,7 +2,7 @@ angular.module('ngSocket', [])
 
 .factory('$socket', ['$rootScope',
 	function($rootScope) {
-		var socket = io.connect(location.origin + ':8001');
+		var socket = io.connect(location.hostname + ':8001');
 
 		return {
 			id: socket.id,
