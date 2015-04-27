@@ -1,0 +1,13 @@
+<div
+	class="card white"
+	ng-class="{
+		clickable: memory.player.submissions.length !== memory.game.blackCard.pick && !memory.player.waiting,
+		chosen: submitted(data)
+	}"
+	ng-click="choose()"
+	data-drag="draggable"
+	data-jqyoui-options="{revert: 'invalid'}"
+	jqyoui-draggable="dragOptions"
+>
+	<span>{{ data.text }}</span>
+</div>

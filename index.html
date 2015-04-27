@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>Hoobamiby 2</title>
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/dist/style.css">
+</head>
+<body ng-controller="mainCtrl">
+
+	<div ui-view></div>
+
+	<div ng-include="'app/views/settingsModal.html'" ng-show="openMenu"></div>
+	
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="assets/dist/libs.min.js"></script>
+	<script src="app/modules/ngSocket.js"></script>
+	<script src="assets/dist/app.min.js"></script>
+</body>
+</html>

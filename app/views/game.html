@@ -1,0 +1,63 @@
+
+<div class="game" layout="full-col">
+	<!--
+		Scoreboard
+	-->
+	<div class="scoreboard" layout="row" >
+		<div class="player" flex="1" ng-repeat="player in memory.game.players">
+			<icon glyph="gavel" ng-show="player.isJudge"/>
+			<icon glyph="user" ng-show="player.isHost"/>
+			{{ player.nickname }} ({{ player.blackCards.length }})
+		</div>
+	</div>
+
+	<div layout="row" justify="center" align="center" flex="1" ng-show="memory.game.started">
+		<!--
+			Black Card
+		-->
+		<black-card data="memory.game.blackCard"></black-card>
+
+		<!--
+			Dropzone
+		-->
+		<div class="large dropzone card" ng-show="memory.player.submissions.length < memory.game.blackCard.pick && !memory.player.isJudge">
+			Choose {{ memory.game.blackCard.pick }} card<span ng-show="memory.game.blackCard.pick > 1">s</span>
+		</div>
+
+		<!--
+			Submissions
+		-->
+		<div class="cards" layout="row" justify="start">
+			<!--
+				Submission Groups
+			-->
+			<div ng-repeat="(socketID, submission) in memory.game.submissions" ng-class="{group: submission.length > 1}" layout="row">
+				<!--
+					Submission Cards
+				-->
+				<div class="large white card" ng-repeat="card in submission" ng-click="choose(socketID)">
+					<span ng-show="memory.game.reveal">{{ card.text }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--
+		Game not begun
+	-->
+	<div layout="col" justify="center" align="center" flex="1" ng-hide="memory.game.started">
+
+		<h1>The game has not begun yet</h1>
+
+		<h2 class="roomName">{{ memory.game.roomName | uppercase }}</h2>
+
+		<button class="btn" ng-click="start()" ng-disabled="memory.game.players.length < memory.game.minPlayers" ng-show="memory.game.host.socketID == memory.player.socketID">Start</button>
+	</div>
+
+	<!--
+		Hand
+	-->
+	<div class="hand" ng-show="memory.game.started && !memory.player.isJudge">
+		<card ng-repeat="white in memory.player.whiteCards" data="white" flex="1"></card>
+	</div>
+</div>

@@ -1,0 +1,45 @@
+navbutton-color = #fff
+navbutton-size = 40px
+navbutton-padding = 10px
+navbutton-linewidth = 3px
+navbutton-anim-time = 0.2s
+navbutton-anim-stage-delay = 0.1s
+
+
+.navbutton
+	user-select none
+	display flex
+	align-items center
+	justify-content center
+	width navbutton-size
+	height navbutton-size
+	cursor pointer
+	overflow hidden
+	position relative
+	z-index 6
+	transition all navbutton-anim-time ease navbutton-anim-stage-delay
+
+	.line
+		position relative
+		width navbutton-size - navbutton-padding
+		height navbutton-linewidth
+		background navbutton-color
+		box-shadow 0 10px 0 navbutton-color, 0 -10px 0 navbutton-color
+		transition transform navbutton-anim-time ease navbutton-anim-stage-delay, box-shadow navbutton-anim-time ease
+
+		&:after
+			display block
+			position absolute
+			content ' '
+			width navbutton-size - navbutton-padding
+			height navbutton-linewidth
+			background navbutton-color
+			transform rotate(180deg)
+			transition all navbutton-anim-time ease navbutton-anim-stage-delay
+
+	&.open .line
+		box-shadow 0 0 0 rgba(255, 255, 255, 0), 0 -0 0 rgba(255, 255, 255, 0)
+		transform rotate(45deg)
+
+		&:after
+			transform rotate(90deg)
