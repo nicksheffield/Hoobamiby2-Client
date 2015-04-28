@@ -6,9 +6,26 @@
 	.player
 		border-right 1px solid #aaa
 		text-align center
+		display block
 		
 		&:last-of-type
 			border-right none
+			
+		&.winner
+			position relative
+			
+			&:after
+				content '+1'
+				position absolute
+				font-size 2em
+				font-weight bold
+				color #8BC34A
+				top 300%
+				left 0
+				width 100%
+				@extend .animated
+				@extend .tada
+				
 			
 	.score
 		border-radius 3px

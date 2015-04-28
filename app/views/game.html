@@ -3,7 +3,7 @@
 		Scoreboard
 	-->
 	<div class="scoreboard" layout="row" >
-		<div class="player" flex="1" ng-repeat="player in memory.game.players">
+		<div class="player" flex="1" ng-repeat="player in memory.game.players" ng-class="{winner: memory.game.winnerID == player.socketID}">
 			<icon glyph="gavel" ng-show="player.isJudge"/>
 			<!-- <icon glyph="user" ng-show="player.isHost"/> -->
 			{{ player.nickname }} <span class="score">{{ player.blackCards.length }}</span>
