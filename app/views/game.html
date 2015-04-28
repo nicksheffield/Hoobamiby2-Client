@@ -48,7 +48,7 @@
 
 		<h1>The game has not begun yet</h1>
 
-		<h2 class="roomName">{{ memory.game.roomName | uppercase }}</h2>
+		<input type="text" readonly class="roomName" value="{{ memory.game.roomName | uppercase }}" ng-click-select>
 
 		<button class="btn animate-forever" ng-class="{tada: memory.game.players.length >= memory.game.minPlayers, animated: memory.player.isHost}" ng-click="start()" ng-disabled="memory.game.players.length < memory.game.minPlayers" ng-show="memory.game.host.socketID == memory.player.socketID">Start</button>
 	</div>

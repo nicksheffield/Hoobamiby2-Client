@@ -30,15 +30,15 @@ gulp.task('styles', function () {
 
 // set up the task for working on my app scripts
 gulp.task('app', function(){
-	return es.merge(
-		gulp.src('app/app.js'),
-		gulp.src('app/app.auth.js'),
-		gulp.src('app/app.route.js'),
-		gulp.src('app/controllers/*.js'),
-		gulp.src('app/directives/*.js'),
-		gulp.src('app/filters/*.js'),
-		gulp.src('app/services/*.js')
-	)
+	return gulp.src([
+		'app/app.js',
+		'app/app.auth.js',
+		'app/app.route.js',
+		'app/controllers/*.js',
+		'app/directives/*.js',
+		'app/filters/*.js',
+		'app/services/*.js'
+	])
 		.pipe(concat('app.min.js'))
 		.pipe(uglify({ mangle: false }))
 		.pipe(gulp.dest('assets/dist'));
