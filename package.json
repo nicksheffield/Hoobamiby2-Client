@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "bower install --allow-root; gulp app; gulp styles; gulp libs"
+    "install": "bower install --allow-root; gulp app; gulp styles; gulp libs",
+    "update": "bower install --allow-root; gulp app; gulp styles; gulp libs"
   },
   "author": "",
   "license": "ISC",
