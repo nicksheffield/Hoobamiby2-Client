@@ -41,6 +41,14 @@ card-highlight = #FFEB3B
 		&.chosen
 			transform scale(0)
 		
+		&.winner
+			background card-highlight
+			@extend .animated
+			@extend .rubberBand
+			// @extend .animate-forever
+			z-index 7
+			box-shadow 0 0 4px rgba(0,0,0,0.4)
+		
 		&.clickable
 			cursor pointer
 			

@@ -32,6 +32,15 @@ angular.module('app.routes')
 				data: {
 					requireLogin: true
 				}
+			})
+
+			.state('gameover', {
+				url: '/gameover',
+				templateUrl: 'app/views/gameOver.html',
+				controller: 'gameoverCtrl',
+				data: {
+					requireLogin: true
+				}
 			});
 	}
 ]);

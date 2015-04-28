@@ -20,6 +20,21 @@ angular.module('app.controllers')
 			$socket.emit('create', { nickname: $memory.player.nickname });
 		};
 
+		/*$scope.greeting = function(){
+			var g = _.sample([
+				'Yo',
+				'Hey',
+				'Wazzup',
+				'Waddup',
+				'What up',
+				'Hello',
+				'Ayy'
+			]);
+
+			console.log(g);
+			return g;
+		};*/
+
 		$socket.on('gameJoined', function(data){
 			$memory.game = data.game;
 			$memory.player = data.player;

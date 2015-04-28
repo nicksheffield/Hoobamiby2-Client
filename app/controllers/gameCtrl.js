@@ -23,7 +23,8 @@ angular.module('app.controllers')
 
 		// choose the winner
 		$scope.choose = function(playerID) {
-			if ($memory.player.isJudge) {
+			console.log(playerID);
+			if ($memory.player.isJudge && $memory.game.reveal) {
 				$socket.emit('choose', {
 					socketID: playerID
 				});
@@ -39,6 +40,11 @@ angular.module('app.controllers')
 		$socket.on('gameJoined', function(data) {
 			$memory.game = data.game;
 			$memory.player = data.player;
+		});
+
+		$socket.on('gameOver', function(){
+			console.log('Game Over!');
+			$state.go('gameover');
 		});
 	}
 ]);

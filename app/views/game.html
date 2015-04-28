@@ -5,12 +5,12 @@
 	<div class="scoreboard" layout="row" >
 		<div class="player" flex="1" ng-repeat="player in memory.game.players">
 			<icon glyph="gavel" ng-show="player.isJudge"/>
-			<icon glyph="user" ng-show="player.isHost"/>
-			{{ player.nickname }} ({{ player.blackCards.length }})
+			<!-- <icon glyph="user" ng-show="player.isHost"/> -->
+			{{ player.nickname }} <span class="score">{{ player.blackCards.length }}</span>
 		</div>
 	</div>
 
-	<div layout="row" justify="center" align="center" flex="1" ng-show="memory.game.started">
+	<div layout="row" justify="center" align="center" flex="1" ng-show="memory.game.started" class="transition-me">
 		<!--
 			Black Card
 		-->
@@ -34,7 +34,7 @@
 				<!--
 					Submission Cards
 				-->
-				<div class="large white card" ng-repeat="card in submission" ng-click="choose(socketID)">
+				<div class="large white card" ng-repeat="card in submission" ng-click="choose(socketID, card)" ng-class="{clickable: memory.player.isJudge && memory.game.reveal, winner: socketID == memory.game.winnerID}">
 					<span ng-show="memory.game.reveal">{{ card.text }}</span>
 				</div>
 			</div>
@@ -44,13 +44,13 @@
 	<!--
 		Game not begun
 	-->
-	<div layout="col" justify="center" align="center" flex="1" ng-hide="memory.game.started">
+	<div layout="col" justify="center" align="center" flex="1" ng-hide="memory.game.started" class="transition-me">
 
 		<h1>The game has not begun yet</h1>
 
 		<h2 class="roomName">{{ memory.game.roomName | uppercase }}</h2>
 
-		<button class="btn" ng-click="start()" ng-disabled="memory.game.players.length < memory.game.minPlayers" ng-show="memory.game.host.socketID == memory.player.socketID">Start</button>
+		<button class="btn animate-forever" ng-class="{tada: memory.game.players.length >= memory.game.minPlayers, animated: memory.player.isHost}" ng-click="start()" ng-disabled="memory.game.players.length < memory.game.minPlayers" ng-show="memory.game.host.socketID == memory.player.socketID">Start</button>
 	</div>
 
 	<!--

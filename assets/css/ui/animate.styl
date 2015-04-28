@@ -1,0 +1,13 @@
+.transition-me
+	transition all 1s ease
+
+	@extend .animated
+	
+	&.ng-hide-add
+		@extend .fadeOutRight
+	
+	&.ng-hide-remove
+		@extend .fadeInLeft
+
+.animate-forever
+	animation-iteration-count infinite

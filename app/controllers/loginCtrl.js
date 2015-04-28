@@ -4,9 +4,10 @@ angular.module('app.controllers')
 	function($scope, $localStorage, $state, $memory) {
 		
 		$scope.login = function(){
-			console.log($memory.player);
+			$memory.player.nickname = $memory.player.nickname.substring(0, 10);
+			
 			if($memory.player.nickname.trim() !== ''){
-				$localStorage.nickname = $memory.player.nickname.substring(0, 10);
+				$localStorage.nickname = $memory.player.nickname;
 				if($memory.token){
 					$state.go('game', {roomName: $memory.token});
 				}else{

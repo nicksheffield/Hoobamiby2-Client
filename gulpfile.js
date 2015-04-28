@@ -40,7 +40,7 @@ gulp.task('app', function(){
 		gulp.src('app/services/*.js')
 	)
 		.pipe(concat('app.min.js'))
-		.pipe(uglify())
+		.pipe(uglify({ mangle: false }))
 		.pipe(gulp.dest('assets/dist'));
 });
 

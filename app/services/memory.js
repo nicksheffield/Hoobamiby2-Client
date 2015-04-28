@@ -18,6 +18,9 @@ angular.module('app.services')
 			// shuffle doesn't work, figure out something else
 			// data.submissions = _.shuffle(data.submissions);
 			mem.game = data;
+
+			// gotta shuffle here somehow
+
 			console.log('gameUpdate', data);
 		});
 
