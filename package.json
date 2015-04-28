@@ -1,10 +1,10 @@
 {
-  "name": "hoobamiby2",
-  "version": "1.0.0",
+  "name": "hoobamiby2-client",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "bower install --allow-root; gulp app; gulp style; gulp lib"
+    "install": "bower install --allow-root && gulp app && gulp styles && gulp libs"
   },
   "author": "",
   "license": "ISC",
