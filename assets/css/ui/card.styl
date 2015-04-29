@@ -9,13 +9,13 @@ card-highlight = #FFEB3B
 .card
 	vertical-align top
 	display inline-block
-	width 150px
-	height 200px
+	width 120px
+	height 180px
 	font-weight bold
 	background #fff
 	font-size 0.9em
-	padding 1em
-	margin 0 0.2em
+	padding 0.5em
+	margin 0 0.3em
 	border-radius 5px
 	paper-transition box-shadow transform width height font-size
 	user-select none
@@ -68,3 +68,7 @@ card-highlight = #FFEB3B
 		text-align center
 		font-weight normal
 		position relative
+	
+		@extend .animated
+		@extend .animate-forever
+		@extend .pulse

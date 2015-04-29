@@ -10,11 +10,13 @@
 		</div>
 	</div>
 
-	<div layout="row" justify="center" align="center" flex="1" ng-show="memory.game.started" class="transition-me">
+
+	
+	<div layout="row" justify="center" align="center" flex="1">
 		<!--
 			Black Card
 		-->
-		<black-card data="memory.game.blackCard"></black-card>
+		<black-card data="memory.game.blackCard.text"></black-card>
 
 		<!--
 			Dropzone
@@ -42,21 +44,35 @@
 	</div>
 
 	<!--
-		Game not begun
-	-->
-	<div layout="col" justify="center" align="center" flex="1" ng-hide="memory.game.started" class="transition-me">
-
-		<h1>The game has not begun yet</h1>
-
-		<input type="text" readonly class="roomName" value="{{ memory.game.roomName | uppercase }}" ng-click-select>
-
-		<button class="btn animate-forever" ng-class="{tada: memory.game.players.length >= memory.game.minPlayers, animated: memory.player.isHost}" ng-click="start()" ng-disabled="memory.game.players.length < memory.game.minPlayers" ng-show="memory.game.host.socketID == memory.player.socketID">Start</button>
-	</div>
-
-	<!--
 		Hand
 	-->
 	<div class="hand" ng-show="memory.game.started && !memory.player.isJudge" ng-class="{waiting: memory.player.waiting}">
 		<card ng-repeat="white in memory.player.whiteCards" data="white" flex="1"></card>
 	</div>
+</div>
+
+<!--
+	Game not begun
+-->
+<div layout="full-col" justify="center" align="center" ng-hide="memory.game.started" class="notStarted transition-me">
+
+	<h1>The game has not begun yet</h1>
+
+	<input type="text" readonly class="roomName" value="{{ memory.game.roomName | uppercase }}" ng-click-select>
+
+	<button class="btn animate-forever" ng-class="{tada: memory.game.players.length >= memory.game.minPlayers, animated: memory.player.isHost}" ng-click="start()" ng-disabled="memory.game.players.length < memory.game.minPlayers" ng-show="memory.game.host.socketID == memory.player.socketID">Start</button>
+</div>
+
+<!--
+	Game over
+-->
+<div layout="full-col" justify="center" align="center" ng-show="memory.game.ended" class="gameOver">
+
+	<h1>{{ winner.nickname }} wins!</h1>
+
+	<div layout="row">
+		<black-card ng-repeat="card in winner.blackCards" data="card" class="animated animate-forever tada win-card-{{$index}}"></black-card>
+	</div>
+
+	
 </div>

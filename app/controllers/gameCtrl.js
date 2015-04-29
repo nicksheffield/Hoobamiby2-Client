@@ -44,7 +44,30 @@ angular.module('app.controllers')
 
 		$socket.on('gameOver', function(){
 			console.log('Game Over!');
-			$state.go('gameover');
+			_.forEach($memory.game.players, function(player){
+				if(player.blackCards.length > $scope.winner.blackCards.length){
+					$scope.winner = player;
+				}
+			});
+		});
+
+
+		/*
+			Game over stuff
+		*/
+		$scope.winner = {
+			blackCards: []
+		};
+
+		
+
+		$scope.reset = function(){
+			$socket.emit('reset');
+		};
+
+		$socket.on('resetGame', function(){
+			console.log('resetGame');
+			$state.go('game', {roomName: $memory.game.roomName});
 		});
 	}
 ]);

@@ -6,9 +6,9 @@ angular.module('app.directives')
 		function link(scope, el, attrs){
 			scope.$watch('data', function(newVal, oldVal){
 				if(scope.data !== undefined){
-					scope.data.text = scope.data.text.replace('%s', '_____');
-					scope.data.text = scope.data.text.replace('%s2', '_____');
-					scope.data.text = scope.data.text.replace('%s3', '_____');
+					scope.data = scope.data.replace('%s', '_____');
+					scope.data = scope.data.replace('%s2', '_____');
+					scope.data = scope.data.replace('%s3', '_____');
 				}
 			});
 		}
