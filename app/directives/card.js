@@ -9,7 +9,6 @@ angular.module('app.directives')
 				console.log('clicked');
 				// if the amount of cards the player has submitted is less than the pick amount
 				// and the game has started
-				console.log('waiting?', $memory.player.waiting);
 				if($memory.player.submissions.length < $memory.game.blackCard.pick && $memory.game.started && !$memory.player.waiting){
 					// then add this card to the players submissions
 					$memory.player.submissions.push(scope.data);
