@@ -37,6 +37,12 @@
 	background #333
 	z-index 9
 	color #fff
+	transition all 1s ease
+	
+	@extend .animated
+	
+	&.ng-hide-animate
+		@extend .fadeOut
 
 
 .win-card-1

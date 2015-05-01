@@ -39,7 +39,13 @@ card-highlight = #FFEB3B
 		flex 1
 
 		&.chosen
-			transform scale(0)
+			opacity 0.1
+		
+		&.clickable
+			cursor pointer
+			
+			&:hover
+				background card-highlight
 		
 		&.winner
 			background card-highlight
@@ -48,12 +54,9 @@ card-highlight = #FFEB3B
 			// @extend .animate-forever
 			z-index 7
 			box-shadow 0 0 4px rgba(0,0,0,0.4)
-		
-		&.clickable
-			cursor pointer
 			
-			&:hover
-				background card-highlight
+		&.ng-animate
+			transition 0s none
 
 	&.submission
 		transform scale(0)
@@ -72,3 +75,7 @@ card-highlight = #FFEB3B
 		@extend .animated
 		@extend .animate-forever
 		@extend .pulse
+
+
+.hand .card
+	transition-duration 0.3s

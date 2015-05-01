@@ -4,6 +4,7 @@ angular.module('app.services')
 	function($localStorage, $socket){
 		var mem = {
 			game: {},
+			submissions: {},
 			token: '',
 			player: {
 				nickname: $localStorage.nickname
@@ -15,10 +16,9 @@ angular.module('app.services')
 		};
 
 		$socket.on('gameUpdate', function(data){
-			// shuffle doesn't work, figure out something else
-			// data.submissions = _.shuffle(data.submissions);
+			
 			mem.game = data;
-
+			
 			// gotta shuffle here somehow
 
 			console.log('gameUpdate', data);

@@ -69,5 +69,11 @@ angular.module('app.controllers')
 			console.log('resetGame');
 			$state.go('game', {roomName: $memory.game.roomName});
 		});
+		
+		$scope.submissions = [];
+		
+		$scope.$watch('memory.game.submissions', function(newVal, oldVal){
+			console.log(newVal);
+		});
 	}
 ]);

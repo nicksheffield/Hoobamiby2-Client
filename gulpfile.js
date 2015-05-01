@@ -16,7 +16,9 @@ gulp.task('styles', function () {
 	var s = stylus(), sFail = function(){s.end();}
 
 	return es.merge(
-		gulp.src('bower_components/animate.css/animate.css'),
+		gulp.src([
+			'bower_components/animate.css/animate.css'
+		]),
 		gulp.src('assets/css/style.styl').pipe(s).on('error', sFail)
 	)
 		.pipe(concatCss('style.css'))

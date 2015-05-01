@@ -4,6 +4,7 @@ angular.module('app.controllers')
 	function($scope, $localStorage, $state, $memory) {
 		
 		$scope.login = function(){
+			if(!$memory.player.nickname) $memory.player.nickname = '';
 			$memory.player.nickname = $memory.player.nickname.substring(0, 10);
 			
 			if($memory.player.nickname.trim() !== ''){

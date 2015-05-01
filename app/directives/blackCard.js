@@ -9,6 +9,7 @@ angular.module('app.directives')
 					scope.data = scope.data.replace('%s', '_____');
 					scope.data = scope.data.replace('%s2', '_____');
 					scope.data = scope.data.replace('%s3', '_____');
+					scope.data = scope.data.replace('\\', '<br>');
 				}
 			});
 		}

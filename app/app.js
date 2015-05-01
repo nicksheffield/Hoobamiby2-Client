@@ -5,8 +5,8 @@ angular.module('app.services', []);
 angular.module('app.routes', []);
 
 angular.module('app', [
-	// 'ngAnimate',
 	'ngStorage',
+	'ngSanitize',
 	'ngSocket',
 	'ui.router',
 

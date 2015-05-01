@@ -34,9 +34,17 @@
 			-->
 			<div ng-repeat="(socketID, submission) in memory.game.submissions" ng-class="{group: submission.length > 1}" layout="row">
 				<!--
-					Submission Cards
+					Submitted Cards
 				-->
-				<div class="large white card" ng-repeat="card in submission" ng-click="choose(socketID, card)" ng-class="{clickable: memory.player.isJudge && memory.game.reveal, winner: socketID == memory.game.winnerID}">
+				<div
+					ng-repeat="card in submission"
+					ng-click="choose(socketID, card)"
+					ng-class="{
+						clickable: memory.player.isJudge && memory.game.reveal,
+						winner: socketID == memory.game.winnerID
+					}"
+					class="large white card"
+				>
 					<span ng-show="memory.game.reveal">{{ card.text }}</span>
 				</div>
 			</div>
@@ -54,13 +62,24 @@
 <!--
 	Game not begun
 -->
-<div layout="full-col" justify="center" align="center" ng-hide="memory.game.started" class="notStarted transition-me">
+<div layout="full-col" justify="center" align="center" ng-hide="memory.game.started" class="notStarted">
 
 	<h1>The game has not begun yet</h1>
 
 	<input type="text" readonly class="roomName" value="{{ memory.game.roomName | uppercase }}" ng-click-select>
 
-	<button class="btn animate-forever" ng-class="{tada: memory.game.players.length >= memory.game.minPlayers, animated: memory.player.isHost}" ng-click="start()" ng-disabled="memory.game.players.length < memory.game.minPlayers" ng-show="memory.game.host.socketID == memory.player.socketID">Start</button>
+	<button
+		class="btn animate-forever"
+		ng-class="{
+			tada: memory.game.players.length >= memory.game.minPlayers,
+			animated: memory.player.isHost
+		}"
+		ng-click="start()"
+		ng-disabled="memory.game.players.length < memory.game.minPlayers"
+		ng-show="memory.game.host.socketID == memory.player.socketID"
+	>
+		Start
+	</button>
 </div>
 
 <!--
