@@ -2,7 +2,7 @@
 	<!--
 		Scoreboard
 	-->
-	<div class="scoreboard" layout="row" >
+	<div class="scoreboard" layout="row sm-col">
 		<div class="player" flex="1" ng-repeat="player in memory.game.players" ng-class="{winner: memory.game.winnerID == player.socketID}">
 			<icon glyph="gavel" ng-show="player.isJudge"/>
 			<!-- <icon glyph="user" ng-show="player.isHost"/> -->
@@ -12,7 +12,7 @@
 
 
 	
-	<div layout="row" justify="center" align="center" flex="1">
+	<div layout="row sm-col" justify="center" align="center" flex="1" class="board">
 		<!--
 			Black Card
 		-->
@@ -54,7 +54,8 @@
 	<!--
 		Hand
 	-->
-	<div class="hand" ng-show="memory.game.started && !memory.player.isJudge" ng-class="{waiting: memory.player.waiting}">
+	<div class="hand" ng-show="memory.game.started && !memory.player.isJudge" ng-class="{waiting: memory.player.waiting, showHand: showHand}">
+		<div class="handle" ng-click="showHand =! showHand"><i class="fa fa-hand-o-down"></i> Your Cards</div>
 		<card ng-repeat="white in memory.player.whiteCards" data="white" flex="1"></card>
 	</div>
 </div>

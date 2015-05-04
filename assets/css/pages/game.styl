@@ -7,11 +7,14 @@
 .hand
 	overflow-x scroll
 	white-space nowrap
+	text-align center
 	
 	&.waiting
 		opacity 0.5
-		
 	
+	.handle
+		display none
+
 
 .roomName
 	font-weight 100
@@ -57,3 +60,64 @@
 	animation-delay -0.6s
 .win-card-6
 	animation-delay -0.8s
+	
+
+@keyframes plus-one
+	0%
+		opacity 0
+		transform translateY(100px)
+	50%
+		opacity 1
+	100%
+		transform translateY(0px)
+
+.scoreboard
+	background #eee
+	color #333
+	padding 1em 0
+	
+	.player
+		border-right 1px solid #aaa
+		text-align center
+		display block
+		
+		&:last-of-type
+			border-right none
+			
+		&.winner
+			position relative
+			
+			&:after
+				content '+1'
+				position absolute
+				font-size 2em
+				font-weight bold
+				color #8BC34A
+				top 300%
+				left 0
+				width 100%
+				@extend .animated
+				// @extend .tada
+				animation-name plus-one
+				animation-delay .5s
+
+	.score
+		border-radius 3px
+		background #333
+		color #eee
+		padding 0.3em 0.6em
+		margin-left 1em
+	
+	.judge
+		font-weight bold
+		
+	.host
+		text-decoration underline
+		
+	.roomName
+		text-align center
+		
+		span
+			border 1px solid rgba(0,0,0,0.2)
+			padding 0.2em 0.4em
+			border-radius 3px

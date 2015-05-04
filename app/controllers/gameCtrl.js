@@ -2,6 +2,8 @@ angular.module('app.controllers')
 
 .controller('gameCtrl', ['$scope', '$memory', '$state', '$stateParams', '$socket',
 	function($scope, $memory, $state, $stateParams, $socket) {
+		$scope.showHand = false;
+		
 		var roomName = $stateParams.roomName;
 
 		// if there is no room name, redirect out
