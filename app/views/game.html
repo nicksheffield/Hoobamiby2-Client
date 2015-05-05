@@ -6,13 +6,37 @@
 		<div class="player" flex="1" ng-repeat="player in memory.game.players" ng-class="{winner: memory.game.winnerID == player.socketID}">
 			<icon glyph="gavel" ng-show="player.isJudge"/>
 			<!-- <icon glyph="user" ng-show="player.isHost"/> -->
-			{{ player.nickname }} <span class="score">{{ player.blackCards.length }}</span>
+			{{ player.nickname }} <span class="score" ng-show="memory.game.started">{{ player.blackCards.length }}</span>
 		</div>
 	</div>
 
+	<!--
+		Pregame
+	-->
+	<div layout="col" flex="1" justify="center" align="center" ng-hide="memory.game.started" class="notStarted">
 
-	
-	<div layout="row sm-col" justify="center" align="center" flex="1" class="board">
+		<h1>The game has not begun yet</h1>
+
+		<input type="text" readonly class="roomName" value="{{ memory.game.roomName | uppercase }}" ng-click-select>
+
+		<button
+			class="btn animate-forever"
+			ng-class="{
+				tada: memory.game.players.length >= memory.game.minPlayers,
+				animated: memory.player.isHost
+			}"
+			ng-click="start()"
+			ng-disabled="memory.game.players.length < memory.game.minPlayers"
+			ng-show="memory.game.host.socketID == memory.player.socketID"
+		>
+			Start
+		</button>
+	</div>
+
+	<!--
+		Game started
+	-->
+	<div layout="row sm-col" justify="center" align="center" flex="1" class="board" ng-show="memory.game.started">
 		<!--
 			Black Card
 		-->
@@ -58,29 +82,6 @@
 		<div class="handle" ng-click="showHand =! showHand"><i class="fa fa-hand-o-down"></i> Your Cards</div>
 		<card ng-repeat="white in memory.player.whiteCards" data="white" flex="1"></card>
 	</div>
-</div>
-
-<!--
-	Game not begun
--->
-<div layout="full-col" justify="center" align="center" ng-hide="memory.game.started" class="notStarted">
-
-	<h1>The game has not begun yet</h1>
-
-	<input type="text" readonly class="roomName" value="{{ memory.game.roomName | uppercase }}" ng-click-select>
-
-	<button
-		class="btn animate-forever"
-		ng-class="{
-			tada: memory.game.players.length >= memory.game.minPlayers,
-			animated: memory.player.isHost
-		}"
-		ng-click="start()"
-		ng-disabled="memory.game.players.length < memory.game.minPlayers"
-		ng-show="memory.game.host.socketID == memory.player.socketID"
-	>
-		Start
-	</button>
 </div>
 
 <!--
