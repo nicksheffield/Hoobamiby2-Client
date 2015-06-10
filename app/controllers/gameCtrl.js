@@ -4,6 +4,8 @@ angular.module('app.controllers')
 	function($scope, $memory, $state, $stateParams, $socket) {
 		$scope.showHand = false;
 		
+		console.log('blah');
+		
 		var roomName = $stateParams.roomName;
 
 		// if there is no room name, redirect out
