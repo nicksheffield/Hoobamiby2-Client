@@ -4,8 +4,6 @@ angular.module('app.controllers')
 	function($scope, $memory, $state, $stateParams, $socket) {
 		$scope.showHand = false;
 		
-		console.log('blah');
-		
 		var roomName = $stateParams.roomName;
 
 		// if there is no room name, redirect out
@@ -77,7 +75,11 @@ angular.module('app.controllers')
 		$scope.submissions = [];
 		
 		$scope.$watch('memory.game.submissions', function(newVal, oldVal){
-			console.log(newVal);
+			console.log('submissions newVal', newVal);
+		});
+		
+		$scope.$watch('memory.game.players', function(newVal, oldVal){
+			console.log('players newVal', newVal);
 		});
 	}
 ]);

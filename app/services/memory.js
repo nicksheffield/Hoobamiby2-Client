@@ -15,18 +15,16 @@ angular.module('app.services')
 			}
 		};
 
-		$socket.on('gameUpdate', function(data){
+		$socket.on('gameUpdate', function(game){
 			
-			mem.game = data;
-			
-			// gotta shuffle here somehow
+			mem.game = game;
 
-			console.log('gameUpdate', data);
+			console.log('gameUpdate', game);
 		});
 
-		$socket.on('playerUpdate', function(data){
-			mem.player = data;
-			console.log('playerUpdate', data);
+		$socket.on('playerUpdate', function(player){
+			mem.player = player;
+			console.log('playerUpdate', player);
 		});
 
 		return mem;
